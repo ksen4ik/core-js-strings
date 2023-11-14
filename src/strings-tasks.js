@@ -19,9 +19,9 @@
  *   getStringLength(null) => 0
  *   getStringLength(undefined) => 0
  */
-function getStringLength(line) {
-  if(line) {
-    return line.length;
+function getStringLength(value) {
+  if(value) {
+    return value.length;
   } else {
     return 0;
   }
@@ -41,8 +41,8 @@ function getStringLength(line) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(line) {
-  if(typeof line === 'string' || typeof line === 'String') {
+function isString(value) {
+  if(typeof value === 'string' || typeof value === 'String') {
     return true;
   } else {
     return false;
@@ -61,8 +61,8 @@ function isString(line) {
  *   concatenateStrings('aa', '') => 'aa'.
  *   concatenateStrings('', 'bb') => 'bb'
  */
-function concatenateStrings(line1, line2) {
-  return line1.concat(line2);
+function concatenateStrings(value1, value2) {
+  return value1.concat(value2);
 }
 
 /**
@@ -76,8 +76,8 @@ function concatenateStrings(line1, line2) {
  *   getFirstChar('cat') => 'c'
  *   getFirstChar('') => ''
  */
-function getFirstChar(line) {
-  return line.charAt(0);
+function getFirstChar(value) {
+  return value.charAt(0);
 }
 
 /**
@@ -91,8 +91,8 @@ function getFirstChar(line) {
  *   removeLeadingAndTrailingWhitespaces('cat ') => 'cat'
  *   removeLeadingAndTrailingWhitespaces('\t\t\tHello, World! ') => 'Hello, World!'
  */
-function removeLeadingAndTrailingWhitespaces(line) {
-  return line.trim();
+function removeLeadingAndTrailingWhitespaces(value) {
+  return value.trim();
 }
 
 /**
@@ -106,8 +106,8 @@ function removeLeadingAndTrailingWhitespaces(line) {
  *   removeLeadingWhitespaces('cat ') => 'cat '
  *   removeLeadingWhitespaces('\t\t\tHello, World! ') => 'Hello, World! '
  */
-function removeLeadingWhitespaces(line) {
-  return line.trimStart();
+function removeLeadingWhitespaces(value) {
+  return value.trimStart();
 }
 
 /**
@@ -121,8 +121,8 @@ function removeLeadingWhitespaces(line) {
  *   removeTrailingWhitespaces('cat ') => 'cat'
  *   removeTrailingWhitespaces('\t\t\tHello, World! ') => '\t\t\tHello, World!'
  */
-function removeTrailingWhitespaces(line) {
-  return line.trimEnd();
+function removeTrailingWhitespaces(value) {
+  return value.trimEnd();
 }
 
 /**
@@ -138,9 +138,9 @@ function removeTrailingWhitespaces(line) {
  *   repeatString('', 3) => ''
  *   repeatString('abc', -2) => ''
  */
-function repeatString(line, num) {
-  if(num > 0) {
-    return line.repeat(num);
+function repeatString(str, times) {
+  if(times > 0) {
+    return str.repeat(times);
   } else {
     return '';
   }
@@ -158,11 +158,11 @@ function repeatString(line, num) {
  *   removeFirstOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeFirstOccurrences(line, value) {
-  if (line.indexOf(value) === -1) {
-    return line;
+function removeFirstOccurrences(str, value) {
+  if (str.indexOf(value) === -1) {
+    return str;
   } else {
-    return line.slice(0, line.indexOf(value)) + line.slice(line.indexOf(value) + value.length);
+    return str.slice(0, str.indexOf(value)) + str.slice(str.indexOf(value) + value.length);
   }
 }
 
@@ -178,11 +178,11 @@ function removeFirstOccurrences(line, value) {
  *   removeLastOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeLastOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeLastOccurrences(line, value) {
-  if (line.lastIndexOf(value) === -1) {
-    return line;
+function removeLastOccurrences(str, value) {
+  if (str.lastIndexOf(value) === -1) {
+    return str;
   } else {
-    return line.slice(0, line.lastIndexOf(value)) + line.slice(line.lastIndexOf(value) + value.length);
+    return str.slice(0, str.lastIndexOf(value)) + str.slice(str.lastIndexOf(value) + value.length);
   }
 }
 
@@ -213,8 +213,8 @@ function sumOfCodes(/* str */) {
  *   startsWith('Hello World', 'World') => false
  *   startsWith('Hello World', 'Hello') => true
  */
-function startsWith(line, value) {
-  return line.startsWith(value);
+function startsWith(str, substr) {
+  return str.startsWith(substr);
 }
 
 /**
@@ -228,8 +228,8 @@ function startsWith(line, value) {
  *   endsWith('Hello World', 'World') => true
  *   endsWith('Hello World', 'Hello') => false
  */
-function endsWith(line, value) {
-  return line.endsWith(value);
+function endsWith(str, substr) {
+  return str.endsWith(substr);
 }
 
 /**
@@ -259,8 +259,8 @@ function formatTime(minutes, seconds) {
  *   reverseString('abcdef') => 'fedcba'
  *   reverseString('12345') => '54321'
  */
-function reverseString(line) {
-  return line.split('').reverse().join('');
+function reverseString(str) {
+  return str.split('').reverse().join('');
 }
 
 /**
@@ -274,8 +274,8 @@ function reverseString(line) {
  *   orderAlphabetically('textbook') => 'bekoottx'
  *   orderAlphabetically('abc123xyz') => '123abcxyz'
  */
-function orderAlphabetically(line) {
-  return line.split('').sort().join('');
+function orderAlphabetically(str) {
+  return str.split('').sort().join('');
 }
 
 /**
@@ -290,8 +290,8 @@ function orderAlphabetically(line) {
  *   containsSubstring('JavaScript is Fun', 'Python') => false
  *   containsSubstring('12345', '34') => true
  */
-function containsSubstring(line, value) {
-  return line.includes(value) ? true : false;
+function containsSubstring(str, substring) {
+  return str.includes(substring) ? true : false;
 }
 
 /**
@@ -325,8 +325,8 @@ function countVowels(line) {
  *   isPalindrome('apple') => false
  *   isPalindrome('No lemon, no melon') => true
  */
-function isPalindrome(line) {
-  const lineNew = line.replace(/[ .,?!]/g, '').toLowerCase();
+function isPalindrome(str) {
+  const lineNew = str.replace(/[ .,?!]/g, '').toLowerCase();
   const lineReverse = lineNew.split('').reverse().join('');
   return lineReverse === lineNew;
 }
@@ -343,8 +343,8 @@ function isPalindrome(line) {
  *   findLongestWord('A long and winding road') => 'winding'
  *   findLongestWord('No words here') => 'words'
  */
-function findLongestWord(line) {
-  return line.split(' ').sort((a, b) => b.length - a.length)[0];
+function findLongestWord(sentence) {
+  return sentence.split(' ').sort((a, b) => b.length - a.length)[0];
 }
 
 /**
@@ -357,8 +357,8 @@ function findLongestWord(line) {
  *   reverseWords('Hello World') => 'olleH dlroW'
  *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
  */
-function reverseWords(line) {
-  return line.split(' ').map((el) => el.split('').reverse().join('')).join(' ');
+function reverseWords(str) {
+  return str.split(' ').map((el) => el.split('').reverse().join('')).join(' ');
 }
 
 /**
