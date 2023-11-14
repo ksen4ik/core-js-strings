@@ -20,11 +20,10 @@
  *   getStringLength(undefined) => 0
  */
 function getStringLength(value) {
-  if(value) {
+  if (typeof value === 'string') {
     return value.length;
-  } else {
-    return 0;
   }
+  return 0;
 }
 
 /**
@@ -42,11 +41,7 @@ function getStringLength(value) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-  if(typeof value === 'string' || typeof value === 'String') {
-    return true;
-  } else {
-    return false;
-  }
+  return typeof value === 'string' || value instanceof String;
 }
 
 /**
@@ -139,11 +134,10 @@ function removeTrailingWhitespaces(value) {
  *   repeatString('abc', -2) => ''
  */
 function repeatString(str, times) {
-  if(times > 0) {
+  if (times > 0) {
     return str.repeat(times);
-  } else {
-    return '';
   }
+  return '';
 }
 
 /**
@@ -159,11 +153,11 @@ function repeatString(str, times) {
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
 function removeFirstOccurrences(str, value) {
-  if (str.indexOf(value) === -1) {
+  const i = str.indexOf(value);
+  if (i === -1) {
     return str;
-  } else {
-    return str.slice(0, str.indexOf(value)) + str.slice(str.indexOf(value) + value.length);
   }
+  return str.slice(0, i) + str.slice(i + value.length);
 }
 
 /**
@@ -179,11 +173,11 @@ function removeFirstOccurrences(str, value) {
  *   removeLastOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
 function removeLastOccurrences(str, value) {
-  if (str.lastIndexOf(value) === -1) {
+  const i = str.lastIndexOf(value);
+  if (i === -1) {
     return str;
-  } else {
-    return str.slice(0, str.lastIndexOf(value)) + str.slice(str.lastIndexOf(value) + value.length);
   }
+  return str.slice(0, i) + str.slice(i + value.length);
 }
 
 /**
@@ -246,7 +240,9 @@ function endsWith(str, substr) {
  *   formatTime(0, 0) => "00:00"
  */
 function formatTime(minutes, seconds) {
-  return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  const minutesStr = String(minutes).padStart(2, '0');
+  const secondsStr = String(seconds).padStart(2, '0');
+  return `${minutesStr}:${secondsStr}`;
 }
 
 /**
@@ -291,7 +287,7 @@ function orderAlphabetically(str) {
  *   containsSubstring('12345', '34') => true
  */
 function containsSubstring(str, substring) {
-  return str.includes(substring) ? true : false;
+  return str.includes(substring);
 }
 
 /**
@@ -308,7 +304,7 @@ function containsSubstring(str, substring) {
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(line) {
+function countVowels(/* str */) {
   throw new Error('Not implemented');
 }
 
@@ -357,8 +353,8 @@ function findLongestWord(sentence) {
  *   reverseWords('Hello World') => 'olleH dlroW'
  *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
  */
-function reverseWords(str) {
-  return str.split(' ').map((el) => el.split('').reverse().join('')).join(' ');
+function reverseWords(/* str */) {
+  throw new Error('Not implemented');
 }
 
 /**
